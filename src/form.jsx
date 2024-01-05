@@ -141,6 +141,10 @@ class ReactForm extends React.Component {
           if ($item.value === 0) {
             invalid = true;
           }
+        } else if (item.element === 'FileUpload') {
+          if (!$item.value) {
+            invalid = true;
+          }
         } else if ($item.value === undefined || $item.value.length < 1) {
           invalid = true;
         }
