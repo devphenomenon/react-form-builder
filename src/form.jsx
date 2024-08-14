@@ -150,6 +150,7 @@ class ReactForm extends React.Component {
             invalid = true;
           }
         } else if (item.element === "FileUpload") {
+          console.log("$item", $item);
           if (!$item.value) {
             invalid = true;
           }
@@ -169,6 +170,7 @@ class ReactForm extends React.Component {
     };
     if (!itemData.name) return null;
     const ref = this.inputs[item.field_name];
+    console.log("item.element", item.element);
     if (item.element === "Checkboxes" || item.element === "RadioButtons") {
       const checked_options = [];
       item.options.forEach((option) => {
@@ -535,6 +537,8 @@ class ReactForm extends React.Component {
               <FileUpload
                 ref={(c) => (this.inputs[item.field_name] = c)}
                 read_only={this.props.read_only || item.readOnly}
+                token={this.props?.token}
+                apiUrl={this.props?.apiUrl}
                 mutable={true}
                 key={`form_${item.id}`}
                 data={item}

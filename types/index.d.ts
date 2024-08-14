@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import * as React from 'react';
+import * as React from "react";
 
 type BaseElement = {
   id: string;
@@ -89,7 +89,8 @@ export type SignatureElement = {
   readOnly: boolean;
 } & FormBuilderInput;
 export type TaskData = BaseElement &
-  (| StaticElement
+  (
+    | StaticElement
     | FormBuilderInput
     | SelectableElement
     | ImageElement
@@ -144,6 +145,8 @@ export interface FormGeneratorOnSubmitParams {
 export interface FormGeneratorProps {
   form_action: string;
   form_method: string;
+  token: string;
+  apiUrl: string;
   action_name?: string;
   onBlur?: (info: FormGeneratorOnSubmitParams[]) => void;
   onSubmit?: (info: FormGeneratorOnSubmitParams[]) => void;
