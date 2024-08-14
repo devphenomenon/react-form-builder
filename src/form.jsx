@@ -83,6 +83,7 @@ class ReactForm extends React.Component {
     } else if (item.element === "Camera") {
       $item.value = ref.state.img;
     } else if (item.element === "FileUpload") {
+      console.log(ref);
       $item.value = ref.state.fileUpload;
     } else if (ref && ref.inputField && ref.inputField.current) {
       $item = ReactDOM.findDOMNode(ref.inputField.current);
@@ -543,6 +544,7 @@ class ReactForm extends React.Component {
                 key={`form_${item.id}`}
                 data={item}
                 defaultValue={this._getDefaultValue(item)}
+                handleChange={this.handleChange}
               />
             );
           default:

@@ -888,11 +888,19 @@ class FileUpload extends React.Component {
 
       const uploadedFile = await response.json();
 
+      this.setState(
+        {
+          fileUpload: uploadedFile,
+          isLoading: false,
+        },
+        () => {
+          this.props.handleChange();
+        }
+      );
+    } catch (e) {
       self.setState({
-        fileUpload: uploadedFile,
         isLoading: false,
       });
-    } catch (e) {
       console.error(e);
     }
   };
