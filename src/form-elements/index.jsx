@@ -954,22 +954,26 @@ class FileUpload extends React.Component {
         <div className="form-group">
           <ComponentLabel {...this.props} />
           {this.props.read_only === true && this.props.defaultValue ? (
-            <a href={this.props.defaultValue?.url} download>
-              <div className="file-upload-preview">
-                <div style={{ display: "inline-block", marginRight: "5px" }}>
-                  {`Name: ${this.props.defaultValue?.originalname}`}
+            this.props.defaultValue?.url ? (
+              <a href={this.props.defaultValue?.url} download>
+                <div className="file-upload-preview">
+                  <div style={{ display: "inline-block", marginRight: "5px" }}>
+                    {`Name: ${this.props.defaultValue?.originalname}`}
+                  </div>
+                  <div style={{ display: "inline-block", marginLeft: "5px" }}>
+                    {this.props.defaultValue?.size?.length > 6
+                      ? `Size:  ${Math.ceil(
+                          this.props.defaultValue?.size / (1024 * 1024)
+                        )} mb`
+                      : `Size:  ${Math.ceil(
+                          this.props.defaultValue?.size / 1024
+                        )} kb`}
+                  </div>
                 </div>
-                <div style={{ display: "inline-block", marginLeft: "5px" }}>
-                  {this.props.defaultValue?.size?.length > 6
-                    ? `Size:  ${Math.ceil(
-                        this.props.defaultValue?.size / (1024 * 1024)
-                      )} mb`
-                    : `Size:  ${Math.ceil(
-                        this.props.defaultValue?.size / 1024
-                      )} kb`}
-                </div>
-              </div>
-            </a>
+              </a>
+            ) : (
+              <div className="file-upload-preview">No File content</div>
+            )
           ) : this.state.isLoading ? (
             <div className="loading-spinner-container">
               <div className="loading-spinner"></div>
@@ -981,7 +985,7 @@ class FileUpload extends React.Component {
                 <input
                   name={name}
                   type="file"
-                  accept={this.props.data.fileType || "*"}
+                  accept={this.props.data?.fileType || "*"}
                   className="image-upload"
                   onChange={this.displayFileUpload}
                 />
