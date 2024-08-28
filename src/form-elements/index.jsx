@@ -960,7 +960,7 @@ class FileUpload extends React.Component {
                   {`Name: ${this.props.defaultValue?.originalname}`}
                 </div>
                 <div style={{ display: "inline-block", marginLeft: "5px" }}>
-                  {this.props.defaultValue?.size.length > 6
+                  {this.props.defaultValue?.size?.length > 6
                     ? `Size:  ${Math.ceil(
                         this.props.defaultValue?.size / (1024 * 1024)
                       )} mb`
@@ -999,15 +999,15 @@ class FileUpload extends React.Component {
                     <div
                       style={{ display: "inline-block", marginRight: "5px" }}
                     >
-                      {`Name: ${this.state.fileUpload.originalname}`}
+                      {`Name: ${this.state.fileUpload?.originalname}`}
                     </div>
                     <div style={{ display: "inline-block", marginLeft: "5px" }}>
-                      {this.state.fileUpload.size.length > 6
+                      {this.state.fileUpload?.size?.length > 6
                         ? `Size:  ${Math.ceil(
-                            this.state.fileUpload.size / (1024 * 1024)
+                            this.state.fileUpload?.size / (1024 * 1024)
                           )} mb`
                         : `Size:  ${Math.ceil(
-                            this.state.fileUpload.size / 1024
+                            this.state.fileUpload?.size / 1024
                           )} kb`}
                     </div>
                   </div>
